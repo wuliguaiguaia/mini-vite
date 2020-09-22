@@ -5,8 +5,8 @@ const fs = require('fs'),
 let rewriteUtil = {};
 const app = new Koa();
 
-const compilerSfc = require('@vue/compiler-sfc') // .vue
-const compilerDom = require('@vue/compiler-dom') // 模板
+const compilerSfc = require('@vue/compiler-sfc') // 解析.vue
+const compilerDom = require('@vue/compiler-dom') // 解析模板
 
 
 app.use(async ctx => {
@@ -78,7 +78,7 @@ app.listen(3003, _ =>{
 
 rewriteUtil = {
     _import(content) {
-        return content.replace(/from\s+['"']([^'"]+)['"]/g, (match, $1) => {
+        return content.replace(/from\s+['"]([^'"]+)['"]/g, (match, $1) => {
             if(!/^[\.\/]/.test($1)) {
                 return `from "/@modules/${$1}"`;
             } else {
