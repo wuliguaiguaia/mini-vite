@@ -1,5 +1,5 @@
 <template>
-    <h1>hello vite</h1>
+    <h1 class="x">hello vite</h1>
     <div>{{message}}</div>
     <input type="text" v-model="message">
 </template>
@@ -13,3 +13,8 @@ export default {
     }
 }
 </script>
+<style lang="css" scoped>
+    .x {
+        color: red
+    }
+</style>
